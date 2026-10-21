@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d3l7v1708lyto"]
+
+[ext_resource type="PackedScene" uid="uid://tlvrs0hwoqim" path="res://content/levels/prototype_level/prototype_level.tscn" id="1_0co80"]
+[ext_resource type="PackedScene" uid="uid://cpihf2xm53f8c" path="res://content/entities/player/player.tscn" id="2_1y6ca"]
+
+[node name="Gameplay" type="Node3D" unique_id=920667302]
+
+[node name="PrototypeLevel" parent="." unique_id=727385300 instance=ExtResource("1_0co80")]
+
+[node name="Player" parent="." unique_id=1386680803 instance=ExtResource("2_1y6ca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8547201, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1705627737]
+transform = Transform3D(-3.090862e-08, 0.7071068, -0.7071068, 3.090862e-08, 0.7071068, 0.7071068, 1, 0, -4.3711392e-08, -4.719623, 10.643032, 0)
