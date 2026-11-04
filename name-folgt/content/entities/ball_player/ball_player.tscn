@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cfn2dlfvyi50w"]
+
+[ext_resource type="PackedScene" uid="uid://htna1c1s2t86" path="res://content/entities/player/player.tscn" id="1_63rp4"]
+[ext_resource type="PackedScene" uid="uid://dgumwqlfme074" path="res://content/entities/ball/ball.tscn" id="2_lifi0"]
+
+[node name="BallPlayer" type="Node3D" unique_id=1112901752]
+
+[node name="Player" parent="." unique_id=1121926167 node_paths=PackedStringArray("camera_pivot") instance=ExtResource("1_63rp4")]
+camera_pivot = NodePath("../CameraPivot")
+
+[node name="Ball" parent="." unique_id=1861880696 node_paths=PackedStringArray("holder") instance=ExtResource("2_lifi0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8920492)
+holder = NodePath("../Player")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1523719192]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1270524531]
+transform = Transform3D(1, 0, 0, 0, 0.9546485, 0.29773524, 0, -0.29773524, 0.9546485, 0, 3.9818983, 3.8265872)

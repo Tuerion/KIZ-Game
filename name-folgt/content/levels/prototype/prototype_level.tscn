@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bc7jmhdo2eort"]
+
+[ext_resource type="PackedScene" uid="uid://cfn2dlfvyi50w" path="res://content/entities/ball_player/ball_player.tscn" id="1_fnv2a"]
+
+[node name="PrototypeLevel" type="Node3D" unique_id=427864552]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=789561833]
+transform = Transform3D(1, 0, 0, 0, 0.98016906, -0.19816309, 0, 0.19816309, 0.98016906, -1.221283, 13.071477, -81.04116)
+use_collision = true
+size = Vector3(12, 1, 170)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1920515993]
+transform = Transform3D(1, 0, 0, 0, 0.87876326, 0.4772579, 0, -0.4772579, 0.87876326, 0, 4.095402, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=2095962409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.221283, -3.782302, 6.8722916)
+use_collision = true
+size = Vector3(12, 1, 9)
+
+[node name="BallPlayer" parent="." unique_id=1112901752 instance=ExtResource("1_fnv2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -2, 9)
