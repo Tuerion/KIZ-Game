@@ -5,12 +5,12 @@
 
 [node name="BallPlayer" type="Node3D" unique_id=1112901752]
 
-[node name="Player" parent="." unique_id=1121926167 node_paths=PackedStringArray("camera_pivot") instance=ExtResource("1_63rp4")]
+[node name="Player" parent="." unique_id=1121926167 node_paths=PackedStringArray("camera_pivot", "ball") instance=ExtResource("1_63rp4")]
 camera_pivot = NodePath("../CameraPivot")
+ball = NodePath("../Ball")
 
-[node name="Ball" parent="." unique_id=1861880696 node_paths=PackedStringArray("holder") instance=ExtResource("2_lifi0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8920492)
-holder = NodePath("../Player")
+[node name="Ball" parent="." unique_id=1861880696 instance=ExtResource("2_lifi0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1523719192]
 

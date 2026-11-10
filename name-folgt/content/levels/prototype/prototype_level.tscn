@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://bc7jmhdo2eort"]
 
 [ext_resource type="PackedScene" uid="uid://cfn2dlfvyi50w" path="res://content/entities/ball_player/ball_player.tscn" id="1_fnv2a"]
+[ext_resource type="PackedScene" path="res://content/entities/distraction/distraction.tscn" id="2_dist"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63rp4"]
 
 [node name="PrototypeLevel" type="Node3D" unique_id=427864552]
 
@@ -8,6 +11,7 @@
 transform = Transform3D(1, 0, 0, 0, 0.98016906, -0.19816309, 0, 0.19816309, 0.98016906, -1.221283, 13.071477, -81.04116)
 use_collision = true
 size = Vector3(12, 1, 170)
+material = SubResource("StandardMaterial3D_63rp4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1920515993]
 transform = Transform3D(1, 0, 0, 0, 0.87876326, 0.4772579, 0, -0.4772579, 0.87876326, 0, 4.095402, 0)
@@ -19,3 +23,26 @@ size = Vector3(12, 1, 9)
 
 [node name="BallPlayer" parent="." unique_id=1112901752 instance=ExtResource("1_fnv2a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -2, 9)
+
+[node name="Distractions" type="Node3D" parent="."]
+
+[node name="Distraction" parent="Distractions" instance=ExtResource("2_dist")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.17, -17.13)
+
+[node name="Distraction2" parent="Distractions" instance=ExtResource("2_dist")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3.15, -26.93)
+
+[node name="Distraction3" parent="Distractions" instance=ExtResource("2_dist")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 5.13, -36.74)
+
+[node name="Distraction4" parent="Distractions" instance=ExtResource("2_dist")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7.12, -46.54)
+
+[node name="Distraction5" parent="Distractions" instance=ExtResource("2_dist")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 9.1, -56.34)
+
+[node name="Distraction6" parent="Distractions" instance=ExtResource("2_dist")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 11.08, -66.14)
+
+[node name="Distraction7" parent="Distractions" instance=ExtResource("2_dist")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 13.06, -75.94)

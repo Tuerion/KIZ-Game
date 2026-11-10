@@ -1,24 +1,17 @@
+class_name Ball
 extends RigidBody3D
 
-@export var holder: Node3D
-@export var hold_distance := 1.2
-@export var radius := 0.5
-@export var stiffness := 12.0 
+@onready var _shape: SphereShape3D = $CollisionShape3D.shape
+@onready var _mesh: SphereMesh = $MeshInstance3D.mesh
 
-func _integrate_forces(state: PhysicsDirectBodyState3D):
-	if holder == null:
-		return
-
-	var fwd := -holder.global_basis.z
-	fwd.y = 0
-	var target := holder.global_position + fwd.normalized() * hold_distance
-
-	var to_target := target - global_position
-	var vel := state.linear_velocity
-	vel.x = to_target.x * stiffness
-	vel.z = to_target.z * stiffness
-	state.linear_velocity = vel
+var radius: float:
+	get:
+		return _shape.radius
 
 
-	var flat := Vector3(vel.x, 0, vel.z)
-	state.angular_velocity = Vector3.UP.cross(flat) / radius
+func add_distraction(distraction: Distraction) -> void:
+	mass += distraction.weight
+	_shape.radius += distraction.growth
+	_mesh.radius = _shape.radius
+	_mesh.height = _shape.radius * 2
+	distraction.stick_to(self)
