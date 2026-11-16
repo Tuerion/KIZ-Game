@@ -1,0 +1,117 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/phone/phone.gd" id="1_phone"]
+[ext_resource type="PackedScene" path="res://ui/phone/post.tscn" id="2_post"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frame"]
+bg_color = Color(0.05, 0.055, 0.07, 1)
+corner_radius_top_left = 44
+corner_radius_top_right = 44
+corner_radius_bottom_right = 44
+corner_radius_bottom_left = 44
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_screen"]
+bg_color = Color(0.075, 0.085, 0.1, 1)
+corner_radius_top_left = 34
+corner_radius_top_right = 34
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 34
+
+[node name="Phone" type="CanvasLayer"]
+layer = 5
+visible = false
+script = ExtResource("1_phone")
+post_scene = ExtResource("2_post")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.03, 0.05, 0)
+
+[node name="Slide" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Frame" type="Panel" parent="Slide"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -350.0
+offset_right = -90.0
+offset_bottom = 330.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_frame")
+
+[node name="Screen" type="Panel" parent="Slide/Frame"]
+layout_mode = 1
+clip_children = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_screen")
+
+[node name="Feed" type="VBoxContainer" parent="Slide/Frame/Screen"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_top = 40.0
+offset_right = -12.0
+offset_bottom = 40.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="TimeBar" type="ColorRect" parent="Slide/Frame/Screen"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 28.0
+offset_top = 18.0
+offset_right = -28.0
+offset_bottom = 22.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color(0.85, 0.88, 0.95, 0.6)
+
+[node name="Hint" type="Label" parent="Slide/Frame"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = 14.0
+offset_right = 60.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.85)
+theme_override_font_sizes/font_size = 18
+text = "Nach unten wischen, um das Handy wegzulegen"
+horizontal_alignment = 1

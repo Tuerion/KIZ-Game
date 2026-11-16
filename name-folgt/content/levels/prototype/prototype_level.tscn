@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cfn2dlfvyi50w" path="res://content/entities/ball_player/ball_player.tscn" id="1_fnv2a"]
 [ext_resource type="PackedScene" path="res://content/entities/distraction/distraction.tscn" id="2_dist"]
+[ext_resource type="PackedScene" path="res://content/entities/focus_ball/focus_ball.tscn" id="3_focus"]
+[ext_resource type="PackedScene" path="res://content/gameplay/distraction_spawner/distraction_spawner.tscn" id="4_spawner"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63rp4"]
 
@@ -46,3 +48,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 11.08, -66.14)
 
 [node name="Distraction7" parent="Distractions" instance=ExtResource("2_dist")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 13.06, -75.94)
+
+[node name="FocusBalls" type="Node3D" parent="."]
+
+[node name="FocusBall" parent="FocusBalls" instance=ExtResource("3_focus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4.18, -31.8)
+
+[node name="FocusBall2" parent="FocusBalls" instance=ExtResource("3_focus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 8.14, -51.4)
+
+[node name="FocusBall3" parent="FocusBalls" instance=ExtResource("3_focus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.1, -71)
+
+[node name="DistractionSpawner" parent="." node_paths=PackedStringArray("ball") instance=ExtResource("4_spawner")]
+transform = Transform3D(1, 0, 0, 0, 0.98016906, -0.19816309, 0, 0.19816309, 0.98016906, -1.221283, 13.561562, -80.942078)
+ball = NodePath("../BallPlayer/Ball")

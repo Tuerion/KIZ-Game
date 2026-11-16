@@ -1,0 +1,67 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/phone/post.gd" id="1_post"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 14.0
+bg_color = Color(0.11, 0.122, 0.145, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avatar"]
+resource_local_to_scene = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_image"]
+resource_local_to_scene = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_line"]
+bg_color = Color(0.2, 0.216, 0.25, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Post" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+script = ExtResource("1_post")
+
+[node name="Content" type="VBoxContainer" parent="."]
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="Content"]
+theme_override_constants/separation = 10
+
+[node name="Avatar" type="Panel" parent="Content/Header"]
+custom_minimum_size = Vector2(32, 32)
+theme_override_styles/panel = SubResource("StyleBoxFlat_avatar")
+
+[node name="Name" type="Panel" parent="Content/Header"]
+custom_minimum_size = Vector2(110, 10)
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_line")
+
+[node name="Image" type="Panel" parent="Content"]
+custom_minimum_size = Vector2(0, 300)
+theme_override_styles/panel = SubResource("StyleBoxFlat_image")
+
+[node name="Line1" type="Panel" parent="Content"]
+custom_minimum_size = Vector2(0, 10)
+theme_override_styles/panel = SubResource("StyleBoxFlat_line")
+
+[node name="Line2" type="Panel" parent="Content"]
+custom_minimum_size = Vector2(160, 10)
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_line")

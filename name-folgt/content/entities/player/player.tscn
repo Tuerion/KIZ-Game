@@ -6,6 +6,24 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_644j0"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phone"]
+albedo_color = Color(0.08, 0.085, 0.1, 1)
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_phone"]
+material = SubResource("StandardMaterial3D_phone")
+size = Vector3(0.1, 0.18, 0.015)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_screen"]
+albedo_color = Color(0.75, 0.85, 1, 1)
+emission_enabled = true
+emission = Color(0.6, 0.75, 1, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_screen"]
+material = SubResource("StandardMaterial3D_screen")
+size = Vector2(0.085, 0.16)
+
 [node name="Player" type="CharacterBody3D" unique_id=1121926167]
 script = ExtResource("1_e50yv")
 
@@ -14,3 +32,12 @@ shape = SubResource("CapsuleShape3D_644j0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1263296086]
 mesh = SubResource("CapsuleMesh_644j0")
+
+[node name="HandPhone" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.8253, 0.5646, 0, -0.5646, 0.8253, 0, 0.3, -0.56)
+visible = false
+mesh = SubResource("BoxMesh_phone")
+
+[node name="Screen" type="MeshInstance3D" parent="MeshInstance3D/HandPhone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.008)
+mesh = SubResource("QuadMesh_screen")

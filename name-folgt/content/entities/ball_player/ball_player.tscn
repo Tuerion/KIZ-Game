@@ -2,12 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://htna1c1s2t86" path="res://content/entities/player/player.tscn" id="1_63rp4"]
 [ext_resource type="PackedScene" uid="uid://dgumwqlfme074" path="res://content/entities/ball/ball.tscn" id="2_lifi0"]
+[ext_resource type="PackedScene" path="res://ui/phone/phone.tscn" id="3_phone"]
+[ext_resource type="PackedScene" path="res://ui/game_over/game_over.tscn" id="4_over"]
 
 [node name="BallPlayer" type="Node3D" unique_id=1112901752]
 
-[node name="Player" parent="." unique_id=1121926167 node_paths=PackedStringArray("camera_pivot", "ball") instance=ExtResource("1_63rp4")]
+[node name="Player" parent="." unique_id=1121926167 node_paths=PackedStringArray("camera_pivot", "ball", "phone") instance=ExtResource("1_63rp4")]
+hold_distance = 1.0
+grip_range = 2.0
+grip_stiffness = 60.0
+grip_damping = 30.0
 camera_pivot = NodePath("../CameraPivot")
 ball = NodePath("../Ball")
+phone = NodePath("../Phone")
 
 [node name="Ball" parent="." unique_id=1861880696 instance=ExtResource("2_lifi0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
@@ -16,3 +23,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1270524531]
 transform = Transform3D(1, 0, 0, 0, 0.9546485, 0.29773524, 0, -0.29773524, 0.9546485, 0, 3.9818983, 3.8265872)
+
+[node name="Phone" parent="." instance=ExtResource("3_phone")]
+
+[node name="GameOver" parent="." instance=ExtResource("4_over")]
+
+[connection signal="squashed" from="Player" to="GameOver" method="show_game_over"]

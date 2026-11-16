@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/gameplay/distraction_spawner/distraction_spawner.gd" id="1_spawner"]
+[ext_resource type="PackedScene" path="res://content/entities/rolling_distraction/rolling_distraction.tscn" id="2_roll"]
+
+[node name="DistractionSpawner" type="Node3D"]
+script = ExtResource("1_spawner")
+distraction_scene = ExtResource("2_roll")
