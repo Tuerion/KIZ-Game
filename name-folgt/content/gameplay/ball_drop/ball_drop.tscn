@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/gameplay/ball_drop/ball_drop.gd" id="1_drop"]
+
+[node name="BallDrop" type="Node"]
+script = ExtResource("1_drop")

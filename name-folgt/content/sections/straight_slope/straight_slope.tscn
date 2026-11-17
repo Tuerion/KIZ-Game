@@ -1,0 +1,55 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/sections/section/section.gd" id="1_a7aln"]
+[ext_resource type="Material" path="res://content/sections/section/ground_material.tres" id="2_8xb0q"]
+[ext_resource type="PackedScene" path="res://content/gameplay/distraction_spawner/distraction_spawner.tscn" id="3_lel5i"]
+
+[sub_resource type="Curve3D" id="Curve3D_v3fsl"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8.088, -40),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="StraightSlope" type="Node3D" unique_id=1094956430]
+script = ExtResource("1_a7aln")
+
+[node name="DistractionSpots" type="Node3D" parent="." unique_id=983072030]
+
+[node name="Spot1" type="Marker3D" parent="DistractionSpots" unique_id=943043873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.1176, -8)
+
+[node name="Spot2" type="Marker3D" parent="DistractionSpots" unique_id=1758165565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3.1286, -13)
+
+[node name="Spot3" type="Marker3D" parent="DistractionSpots" unique_id=957056740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4.3417997, -19)
+
+[node name="Spot4" type="Marker3D" parent="DistractionSpots" unique_id=1335463724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5.3528, -24)
+
+[node name="Spot5" type="Marker3D" parent="DistractionSpots" unique_id=172644100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6.566, -30)
+
+[node name="Spot6" type="Marker3D" parent="DistractionSpots" unique_id=1183748849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 7.577, -35)
+
+[node name="FocusSpots" type="Node3D" parent="." unique_id=297286228]
+
+[node name="Spot1" type="Marker3D" parent="FocusSpots" unique_id=1166084293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7352, -16)
+
+[node name="Spot2" type="Marker3D" parent="FocusSpots" unique_id=1113471880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 6.1616, -28)
+
+[node name="Slope" type="CSGBox3D" parent="." unique_id=1450643792]
+transform = Transform3D(1, 0, 0, 0, 0.9801777, -0.19812046, 0, 0.19812046, 0.9801777, 0, 3.5539112, -20.09906)
+use_collision = true
+size = Vector3(9, 1, 40.80893)
+material = ExtResource("2_8xb0q")
+
+[node name="Exit" type="Marker3D" parent="." unique_id=1586959756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.088, -40)
+
+[node name="DistractionSpawner" parent="." unique_id=1987502929 instance=ExtResource("3_lel5i")]
+curve = SubResource("Curve3D_v3fsl")

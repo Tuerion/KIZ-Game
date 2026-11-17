@@ -17,6 +17,7 @@ radius = 0.25
 height = 0.5
 
 [node name="FocusBall" type="Area3D"]
+collision_mask = 2
 script = ExtResource("1_focus")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

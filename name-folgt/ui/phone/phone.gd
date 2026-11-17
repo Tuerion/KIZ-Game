@@ -11,18 +11,16 @@ signal closed
 
 var _can_close := false
 var _drag := 0.0
-var _feed_start_y: float
 var _scroll_tween: Tween
 
 @onready var _dim: ColorRect = $Dim
 @onready var _slide: Control = $Slide
 @onready var _feed: VBoxContainer = $Slide/Frame/Screen/Feed
+@onready var _feed_start_y := _feed.position.y
 @onready var _time_bar: ColorRect = $Slide/Frame/Screen/TimeBar
 @onready var _hint: Label = $Slide/Frame/Hint
-
-
-func _ready() -> void:
-	_feed_start_y = _feed.position.y
+@onready var _notification: Control = $Notification
+@onready var _notification_y := _notification.position.y
 
 
 func _input(event: InputEvent) -> void:
@@ -41,7 +39,21 @@ func _input(event: InputEvent) -> void:
 		create_tween().tween_property(_slide, "position:y", 0.0, 0.15)
 
 
+func buzz(duration: float) -> void:
+	_slide.position.y = _hidden_y()
+	_notification.rotation = 0.0
+	_notification.show()
+	show()
+	Input.vibrate_handheld(roundi(duration * 1000))
+
+	create_tween().tween_property(_notification, "position:y", _notification_y, 0.2) 		.from(-_notification.size.y).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	var shake := create_tween().set_loops(roundi(duration / 0.1))
+	shake.tween_property(_notification, "rotation", 0.04, 0.05)
+	shake.tween_property(_notification, "rotation", -0.04, 0.05)
+
+
 func open(duration: float) -> void:
+	_notification.hide()
 	_fill_feed()
 	_can_close = false
 	_drag = 0.0
@@ -63,7 +75,9 @@ func open(duration: float) -> void:
 
 func close() -> void:
 	_can_close = false
-	_scroll_tween.kill()
+	_notification.hide()
+	if _scroll_tween:
+		_scroll_tween.kill()
 	closed.emit()
 
 	var tween := create_tween().set_parallel()

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://xrc2phaj2uyg"]
+
+[ext_resource type="PackedScene" uid="uid://cfn2dlfvyi50w" path="res://content/entities/ball_player/ball_player.tscn" id="1_ballplayer"]
+[ext_resource type="PackedScene" path="res://content/gameplay/level_generator/level_generator.tscn" id="2_generator"]
+[ext_resource type="PackedScene" path="res://content/gameplay/ball_drop/ball_drop.tscn" id="3_drop"]
+[ext_resource type="PackedScene" path="res://content/sections/straight_slope/straight_slope.tscn" id="3_rlabi"]
+[ext_resource type="PackedScene" path="res://content/sections/curve_left/curve_left.tscn" id="4_8q6fp"]
+
+[node name="EndlessLevel" type="Node3D" unique_id=632141147]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1883862072]
+transform = Transform3D(1, 0, 0, 0, 0.87876326, 0.4772579, 0, -0.4772579, 0.87876326, 0, 4.095402, 0)
+
+[node name="BallPlayer" parent="." unique_id=802381695 instance=ExtResource("1_ballplayer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 7)
+
+[node name="LevelGenerator" parent="." unique_id=287650700 node_paths=PackedStringArray("player", "ball") instance=ExtResource("2_generator")]
+sections = Array[PackedScene]([ExtResource("3_rlabi"), ExtResource("4_8q6fp")])
+player = NodePath("../BallPlayer/Player")
+ball = NodePath("../BallPlayer/Ball")
+
+[node name="BallDrop" parent="." unique_id=577450926 node_paths=PackedStringArray("ball", "player") instance=ExtResource("3_drop")]
+ball = NodePath("../BallPlayer/Ball")
+player = NodePath("../BallPlayer/Player")

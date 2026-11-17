@@ -1,13 +1,13 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://do3yqhhwaws1h"]
 
-[ext_resource type="Script" path="res://ui/game_over/game_over.gd" id="1_over"]
+[ext_resource type="Script" uid="uid://bwgr13f6suijw" path="res://ui/game_over/game_over.gd" id="1_over"]
 
-[node name="GameOver" type="CanvasLayer"]
+[node name="GameOver" type="CanvasLayer" unique_id=362563544]
 layer = 10
 visible = false
 script = ExtResource("1_over")
 
-[node name="Root" type="Control" parent="."]
+[node name="Root" type="Control" parent="." unique_id=95835290]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Dim" type="ColorRect" parent="Root"]
+[node name="Dim" type="ColorRect" parent="Root" unique_id=818503702]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,7 +26,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.02, 0.03, 0.05, 0.72)
 
-[node name="Text" type="VBoxContainer" parent="Root"]
+[node name="Text" type="VBoxContainer" parent="Root" unique_id=2092803902]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -42,22 +42,8 @@ grow_vertical = 2
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="Title" type="Label" parent="Root/Text"]
+[node name="Title" type="Label" parent="Root/Text" unique_id=1905645578]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "Überrollt"
-horizontal_alignment = 1
-
-[node name="Message" type="Label" parent="Root/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.85)
-theme_override_font_sizes/font_size = 24
-text = "Deine Ablenkungen sind dir über den Kopf gewachsen."
-horizontal_alignment = 1
-
-[node name="Hint" type="Label" parent="Root/Text"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.55)
-theme_override_font_sizes/font_size = 18
-text = "Tippen für einen neuen Versuch"
+text = "Game Over"
 horizontal_alignment = 1

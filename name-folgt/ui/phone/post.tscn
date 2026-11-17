@@ -1,6 +1,6 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://digptgpct66pd"]
 
-[ext_resource type="Script" path="res://ui/phone/post.gd" id="1_post"]
+[ext_resource type="Script" uid="uid://c0lffj8j27o2t" path="res://ui/phone/post.gd" id="1_post"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
 content_margin_left = 12.0
@@ -20,13 +20,6 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_image"]
-resource_local_to_scene = true
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_line"]
 bg_color = Color(0.2, 0.216, 0.25, 1)
 corner_radius_top_left = 5
@@ -34,34 +27,37 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="Post" type="PanelContainer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_image"]
+resource_local_to_scene = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Post" type="PanelContainer" unique_id=438096578]
 theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 script = ExtResource("1_post")
 
-[node name="Content" type="VBoxContainer" parent="."]
+[node name="Content" type="VBoxContainer" parent="." unique_id=1467708954]
+layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Header" type="HBoxContainer" parent="Content"]
+[node name="Header" type="HBoxContainer" parent="Content" unique_id=1005965447]
+layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Avatar" type="Panel" parent="Content/Header"]
+[node name="Avatar" type="Panel" parent="Content/Header" unique_id=369091202]
 custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_avatar")
 
-[node name="Name" type="Panel" parent="Content/Header"]
+[node name="Name" type="Panel" parent="Content/Header" unique_id=832480292]
 custom_minimum_size = Vector2(110, 10)
+layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_line")
 
-[node name="Image" type="Panel" parent="Content"]
+[node name="Image" type="Panel" parent="Content" unique_id=1401019609]
 custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_image")
-
-[node name="Line1" type="Panel" parent="Content"]
-custom_minimum_size = Vector2(0, 10)
-theme_override_styles/panel = SubResource("StyleBoxFlat_line")
-
-[node name="Line2" type="Panel" parent="Content"]
-custom_minimum_size = Vector2(160, 10)
-size_flags_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_line")

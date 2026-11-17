@@ -5,7 +5,6 @@ class Piece:
 	var shape: CollisionShape3D
 	var mesh: MeshInstance3D
 	var weight: float
-	var growth: float
 
 @export var max_up_speed := 3.0
 @export var focus_time := 6.0
@@ -29,10 +28,7 @@ var _focus_timer := 0.0
 
 
 func _physics_process(delta: float) -> void:
-	if _pieces.is_empty():
-		_focus_timer = 0.0
-		return
-	if not focused:
+	if _pieces.is_empty() or not focused:
 		return
 
 	_focus_timer += delta
@@ -41,8 +37,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
-	if state.linear_velocity.y > max_up_speed:
-		state.linear_velocity.y = max_up_speed
+	state.linear_velocity.y = minf(state.linear_velocity.y, max_up_speed)
 
 
 func add_distraction(distraction: Distraction) -> void:
@@ -55,7 +50,6 @@ func add_distraction(distraction: Distraction) -> void:
 	piece.shape = distraction.shape
 	piece.mesh = distraction.mesh
 	piece.weight = distraction.weight
-	piece.growth = distraction.growth
 	_pieces.append(piece)
 
 	_focus_timer = 0.0
@@ -68,7 +62,6 @@ func remove_distraction() -> void:
 
 	var piece: Piece = _pieces.pop_back()
 	mass -= piece.weight
-	_set_radius(radius - piece.growth)
 	piece.shape.queue_free()
 	_pop_off(piece.mesh)
 
@@ -86,7 +79,6 @@ func _update_center_of_mass() -> void:
 	var weighted_sum := Vector3.ZERO
 	for piece in _pieces:
 		weighted_sum += piece.shape.position * piece.weight
-	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
 	center_of_mass = weighted_sum / mass * wobble
 
 

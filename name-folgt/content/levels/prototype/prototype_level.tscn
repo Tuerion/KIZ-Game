@@ -7,6 +7,13 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63rp4"]
 
+[sub_resource type="Curve3D" id="Curve3D_lane"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 33.687, -166.629),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
 [node name="PrototypeLevel" type="Node3D" unique_id=427864552]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=789561833]
@@ -61,5 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 8.14, -51.4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.1, -71)
 
 [node name="DistractionSpawner" parent="." node_paths=PackedStringArray("ball") instance=ExtResource("4_spawner")]
-transform = Transform3D(1, 0, 0, 0, 0.98016906, -0.19816309, 0, 0.19816309, 0.98016906, -1.221283, 13.561562, -80.942078)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.221283, -3.283, 2.372)
+curve = SubResource("Curve3D_lane")
 ball = NodePath("../BallPlayer/Ball")
+half_width = 5.5

@@ -3,15 +3,12 @@ extends PanelContainer
 @export var saturation := 0.3
 @export var brightness := 0.55
 
-@onready var _avatar: Panel = $Content/Header/Avatar
-@onready var _image: Panel = $Content/Image
-
 
 func _ready() -> void:
-	_tint(_avatar, randf())
-	_tint(_image, randf())
+	_tint($Content/Header/Avatar)
+	_tint($Content/Image)
 
 
-func _tint(panel: Panel, hue: float) -> void:
+func _tint(panel: Panel) -> void:
 	var style: StyleBoxFlat = panel.get_theme_stylebox("panel")
-	style.bg_color = Color.from_hsv(hue, saturation, brightness)
+	style.bg_color = Color.from_hsv(randf(), saturation, brightness)

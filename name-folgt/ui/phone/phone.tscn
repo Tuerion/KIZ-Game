@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://v74osjhoiuiv"]
 
-[ext_resource type="Script" path="res://ui/phone/phone.gd" id="1_phone"]
-[ext_resource type="PackedScene" path="res://ui/phone/post.tscn" id="2_post"]
+[ext_resource type="Script" uid="uid://iqdpt0y5clr6" path="res://ui/phone/phone.gd" id="1_phone"]
+[ext_resource type="PackedScene" uid="uid://digptgpct66pd" path="res://ui/phone/post.tscn" id="2_post"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frame"]
 bg_color = Color(0.05, 0.055, 0.07, 1)
@@ -19,14 +19,22 @@ corner_radius_top_right = 34
 corner_radius_bottom_right = 34
 corner_radius_bottom_left = 34
 
-[node name="Phone" type="CanvasLayer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_notification"]
+bg_color = Color(0.11, 0.122, 0.145, 0.95)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 12
+
+[node name="Phone" type="CanvasLayer" unique_id=440863157]
 layer = 5
 visible = false
 script = ExtResource("1_phone")
 post_scene = ExtResource("2_post")
 
-[node name="Dim" type="ColorRect" parent="."]
-layout_mode = 3
+[node name="Dim" type="ColorRect" parent="." unique_id=916832986]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -35,7 +43,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.02, 0.03, 0.05, 0)
 
-[node name="Slide" type="Control" parent="."]
+[node name="Slide" type="Control" parent="." unique_id=1780244321]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +52,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Frame" type="Panel" parent="Slide"]
+[node name="Frame" type="Panel" parent="Slide" unique_id=237948826]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -60,9 +68,9 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_frame")
 
-[node name="Screen" type="Panel" parent="Slide/Frame"]
-layout_mode = 1
+[node name="Screen" type="Panel" parent="Slide/Frame" unique_id=1892657032]
 clip_children = 1
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -75,7 +83,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_screen")
 
-[node name="Feed" type="VBoxContainer" parent="Slide/Frame/Screen"]
+[node name="Feed" type="VBoxContainer" parent="Slide/Frame/Screen" unique_id=1513260652]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -87,7 +95,7 @@ grow_horizontal = 2
 mouse_filter = 2
 theme_override_constants/separation = 12
 
-[node name="TimeBar" type="ColorRect" parent="Slide/Frame/Screen"]
+[node name="TimeBar" type="ColorRect" parent="Slide/Frame/Screen" unique_id=1250079913]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -99,7 +107,7 @@ grow_horizontal = 2
 mouse_filter = 2
 color = Color(0.85, 0.88, 0.95, 0.6)
 
-[node name="Hint" type="Label" parent="Slide/Frame"]
+[node name="Hint" type="Label" parent="Slide/Frame" unique_id=535516824]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -115,3 +123,30 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.85)
 theme_override_font_sizes/font_size = 18
 text = "Nach unten wischen, um das Handy wegzulegen"
 horizontal_alignment = 1
+
+[node name="Notification" type="Panel" parent="." unique_id=599344341]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 24.0
+offset_right = 200.0
+offset_bottom = 96.0
+grow_horizontal = 2
+pivot_offset = Vector2(200, 36)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_notification")
+
+[node name="Title" type="Label" parent="Notification" unique_id=2082157344]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.9)
+theme_override_font_sizes/font_size = 22
+text = "Neue Benachrichtigung"
+horizontal_alignment = 1
+vertical_alignment = 1

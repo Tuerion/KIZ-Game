@@ -16,6 +16,7 @@ material = SubResource("StandardMaterial3D_dist")
 size = Vector3(0.35, 0.35, 0.35)
 
 [node name="Distraction" type="Area3D"]
+collision_mask = 2
 script = ExtResource("1_dist")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

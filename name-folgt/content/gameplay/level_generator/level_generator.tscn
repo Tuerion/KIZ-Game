@@ -1,0 +1,11 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://content/gameplay/level_generator/level_generator.gd" id="1_gen"]
+[ext_resource type="PackedScene" path="res://content/sections/start/start.tscn" id="2_start"]
+[ext_resource type="PackedScene" path="res://content/sections/straight_slope/straight_slope.tscn" id="3_straight"]
+[ext_resource type="PackedScene" path="res://content/sections/curve_left/curve_left.tscn" id="4_curve"]
+
+[node name="LevelGenerator" type="Node3D"]
+script = ExtResource("1_gen")
+start_section = ExtResource("2_start")
+sections = Array[PackedScene]([ExtResource("3_straight"), ExtResource("4_curve")])
